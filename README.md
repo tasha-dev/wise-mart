@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Wise-Mart
 
-## Getting Started
+Welcome to Wise-Mart, your smart choice for online shopping. Our platform offers a wide range of products with the best deals and a seamless shopping experience.
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [About](#about)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## About
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Wise-Mart is a cutting-edge e-commerce platform designed to provide customers with an intuitive, efficient, and enjoyable shopping experience. Our mission is to make online shopping smart, convenient, and rewarding.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Features
 
-## Learn More
+- **User-Friendly Interface:** Easy navigation and a clean design for a hassle-free shopping experience.
+- **Smart Search:** Advanced search functionality to help you find exactly what you need.
 
-To learn more about Next.js, take a look at the following resources:
+## Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To run Wise-Mart locally, follow these steps:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. **Clone the Repository:**
+    ```bash
+    git clone https://github.com/tasha-dev/wise-mart.git
+    cd wise-mart
+    ```
 
-## Deploy on Vercel
+2. **Install Dependencies:**
+    ```bash
+    npm install
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Start the Development Server:**
+    ```bash
+    npm start
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+4. **Open your browser and navigate to:**
+    ```
+    http://localhost:3000
+    ```
+
+## Usage
+
+1. **Home Page:** Browse the latest products and offers.
+2. **Product Search:** Use the search bar to find specific items.
+3. **Product Details:** Click on a product to view its details, including price, description, and customer reviews.
+4. **Add to Cart:** Add desired products to your shopping cart.
+5. **Checkout:** Proceed to checkout, provide shipping details, and complete your purchase securely.
+6. **Order Tracking:** Track your order status and delivery updates.
+
+## Contributing
+
+We welcome contributions from the community! To contribute:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bugfix.
+3. Commit your changes and push to the new branch.
+4. Open a Pull Request detailing your changes.
+
+Please ensure your code adheres to our coding standards and includes appropriate tests.
+
+## Contact
+
+For any inquiries or feedback, please contact us at:
+
+- **Email:** [@tashaDev](mailto:imwhdiiii@gmail.com)
+
+Thank you for choosing Wise-Mart!
