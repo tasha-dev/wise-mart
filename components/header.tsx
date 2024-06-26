@@ -3,7 +3,7 @@
 import {ReactNode} from "react";
 import Container from "@/components/ui/container";
 import Link from 'next/link';
-import Search from "@/components/search";
+import Search from "@/components/ui/search";
 import ThemeToggle from "@/components/ui/themeToggle";
 import Auth from "@/components/ui/auth";
 import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover"
