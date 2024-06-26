@@ -8,6 +8,7 @@ import {ReactNode} from "react";
 import {siteConfig} from "@/configs";
 import {Metadata} from "next";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 // Defining fonts
 const fontSans = Inter({
@@ -44,6 +45,7 @@ export default function RootLayout({children}: rootLayoutType):ReactNode {
             )}>
                 <Header />
                 {children}
+                <Footer />
             </body>
         </html>
     )
