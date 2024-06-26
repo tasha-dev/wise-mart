@@ -7,6 +7,7 @@ import {rootLayoutType} from "@/types";
 import {ReactNode} from "react";
 import {siteConfig} from "@/configs";
 import {Metadata} from "next";
+import Header from "@/components/header";
 
 // Defining fonts
 const fontSans = Inter({
@@ -38,9 +39,10 @@ export default function RootLayout({children}: rootLayoutType):ReactNode {
     return (
         <html lang="en" suppressHydrationWarning className={'dark'}>
             <body className={cn(
-                "min-h-screen dark:bg-black bg-white",
+                "min-h-screen bg-background",
                 fontSans.className
             )}>
+                <Header />
                 {children}
             </body>
         </html>
