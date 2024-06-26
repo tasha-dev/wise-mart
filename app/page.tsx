@@ -8,7 +8,9 @@ import Container from "@/components/ui/container";
 import useFetch from "@/hooks/useFetch";
 import {productType} from "@/types";
 import Product from "@/components/product";
-import {LoaderCircle} from "lucide-react";
+import { AlertTriangle } from "lucide-react"
+import {Alert, AlertDescription, AlertTitle,} from "@/components/ui/alert"
+import ProductLoading from "@/components/loading/productLoading";
 
 // Creating and exporting home page as default
 export default function HomePage():ReactNode {
@@ -22,12 +24,20 @@ export default function HomePage():ReactNode {
             {
                 (products.loading)
                     ? (
-                        <div className={'flex items-center justify-center w-full'}>
-                            <LoaderCircle className={'w-10 h-10 text-foreground animate-spin'}/>
+                        <div className={'grid lg:grid-cols-2 grid-cols-1 gap-3'}>
+                            <ProductLoading />
+                            <ProductLoading />
+                            <ProductLoading />
+                            <ProductLoading />
                         </div>
                     ) : (products.error)
-                        ? <h1>There was an error</h1>
-                        : (
+                        ? (
+                            <Alert>
+                                <AlertTriangle className="h-4 w-4" />
+                                <AlertTitle>Error</AlertTitle>
+                                <AlertDescription>There was an error while fetching the data</AlertDescription>
+                            </Alert>
+                        ) : (
                             <div className={'grid lg:grid-cols-2 grid-cols-1 gap-3'}>
                                 {
                                     products.data?.map((item, index) => (
