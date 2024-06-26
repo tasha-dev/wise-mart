@@ -8,10 +8,10 @@ export default function NotFoundPage():ReactNode {
     // Returning JSX
     return (
         <Container className={'mt-20 mb-5'}>
-            <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center">
+            <p className="text-2xl">
                 The page you're looking for, <br/>
                 Is not found.
-            </h1>
+            </p>
         </Container>
     );
 }

@@ -14,7 +14,7 @@ import {AlignJustify} from "lucide-react";
 export default function Header():ReactNode {
     // Returning JSX
     return (
-        <header className={'fixed top-0 left-0 w-full bg-background/20 backdrop-blur-2xl border-b border-b-foreground/20'}>
+        <header className={'fixed z-50 top-0 left-0 w-full bg-background/20 backdrop-blur-2xl border-b border-b-foreground/20'}>
             <Container size={'lg'} className={'flex items-center justify-between gap-3'}>
                 <Link className={'text-xl font-normal text-foreground'} href={'/'}>Wise Mart</Link>
                 <div className={'lg:flex hidden items-center gap-3 justify-start'}>
