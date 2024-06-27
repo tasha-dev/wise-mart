@@ -19,7 +19,10 @@ export default function Search():ReactNode {
     return (
         <form
             action="#"
-            onSubmit={() => router.push(`/s/${btoa(searchQuery)}`)}
+            onSubmit={(e) => {
+                e.preventDefault();
+                router.push(`/s/${(searchQuery)}`)
+            }}
         >
             <Input
                 onChange={(e) => setSearchQuery(e.target.value)}
