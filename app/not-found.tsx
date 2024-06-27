@@ -1,8 +1,8 @@
 // Codes by mahdi tasha
 // Importing part
 import {ReactNode} from "react";
-import Container from "@/components/ui/container";
 import {Metadata} from "next";
+import Page from "@/components/page";
 
 // Defining metadata
 export const metadata:Metadata = {title: 'Not Found'}
@@ -11,11 +11,11 @@ export const metadata:Metadata = {title: 'Not Found'}
 export default function NotFoundPage():ReactNode {
     // Returning JSX
     return (
-        <Container className={'mt-20 mb-5'}>
+        <Page>
             <p className="text-2xl">
                 The page you're looking for, <br/>
                 Is not found.
             </p>
-        </Container>
+        </Page>
     );
 }

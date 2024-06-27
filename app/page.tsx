@@ -4,7 +4,6 @@
 
 // Importing part
 import {ReactNode} from "react";
-import Container from "@/components/ui/container";
 import useFetch from "@/hooks/useFetch";
 import {productType} from "@/types";
 import Category from "@/components/category";
@@ -13,6 +12,7 @@ import {AlertTriangle} from "lucide-react"
 import {Alert, AlertDescription, AlertTitle,} from "@/components/ui/alert"
 import ProductLoading from "@/components/loading/productLoading";
 import CategoryLoading from "@/components/loading/categoryLoading";
+import Page from "@/components/page";
 
 // Creating and exporting home page as default
 export default function HomePage():ReactNode {
@@ -22,7 +22,7 @@ export default function HomePage():ReactNode {
 
     // Returning JSX
     return (
-        <Container className={'mt-20 mb-5'}>
+        <Page>
             <h1 className="mb-10 scroll-m-20 border-b border-b-foreground pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">Category</h1>
             {
                 (categories.loading)
@@ -109,6 +109,6 @@ export default function HomePage():ReactNode {
                                 </div>
                             )
             }
-        </Container>
+        </Page>
     );
 }

@@ -26,7 +26,7 @@ export const useUser = create<userStoreType>()((set) => ({
     uid: undefined,
     login: (uid) => {
         localStorage.setItem('uid', uid);
-        set({uid: uid})
+        set({uid: uid});
     },
     logOut: () => {
         localStorage.removeItem('uid');

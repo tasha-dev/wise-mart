@@ -4,13 +4,13 @@
 
 // Importing part
 import {ReactNode, useEffect, useState} from "react";
-import Container from "@/components/ui/container";
 import useFetch from "@/hooks/useFetch";
 import {productType} from "@/types";
 import Product from "@/components/product";
 import {AlertTriangle} from "lucide-react"
 import {Alert, AlertDescription, AlertTitle,} from "@/components/ui/alert"
 import ProductLoading from "@/components/loading/productLoading";
+import Page from "@/components/page";
 
 // Creating and exporting search page as default
 export default function SearchPage({params: {searchQuery}}):ReactNode {
@@ -30,7 +30,7 @@ export default function SearchPage({params: {searchQuery}}):ReactNode {
 
     // Returning JSX
     return (
-        <Container className={'mt-20 mb-5'}>
+        <Page>
             <h1 className="mb-10 scroll-m-20 border-b border-b-foreground pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">Result</h1>
             {
                 (products.loading)
@@ -71,6 +71,6 @@ export default function SearchPage({params: {searchQuery}}):ReactNode {
                             </div>
                         )
             }
-        </Container>
+        </Page>
     );
 }

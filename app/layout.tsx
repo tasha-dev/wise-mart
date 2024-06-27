@@ -9,6 +9,7 @@ import {siteConfig} from "@/configs";
 import {Metadata} from "next";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import {Toaster} from "@/components/ui/sonner"
 
 // Defining fonts
 const fontSans = Inter({
@@ -43,6 +44,7 @@ export default function RootLayout({children}: rootLayoutType):ReactNode {
                 "min-h-screen bg-background",
                 fontSans.className
             )}>
+                <Toaster />
                 <Header />
                 {children}
                 <Footer />
