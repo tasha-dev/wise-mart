@@ -13,14 +13,19 @@ export interface containerType {
 }
 
 export interface productType {
-    id: number,
-    title: string,
-    price: number,
-    description: string,
-    category: string,
-    image: string,
-    rating: {
+    id?: number,
+    title?: string,
+    price?: number,
+    description?: string,
+    category?: string,
+    image?: string,
+    rating?: {
         rate: number,
         count: number
     }
+}
+
+export interface cartItemType {
+    item: productType;
+    count: number;
 }

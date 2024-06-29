@@ -9,6 +9,7 @@ import Auth from "@/components/ui/auth";
 import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover"
 import {Button} from "@/components/ui/button";
 import {AlignJustify} from "lucide-react";
+import Cart from "@/components/ui/cart";
 
 // Creating and exporting header component as default
 export default function Header():ReactNode {
@@ -17,27 +18,30 @@ export default function Header():ReactNode {
         <header className={'fixed z-50 top-0 left-0 w-full bg-background/20 backdrop-blur-2xl border-b border-b-foreground/20'}>
             <Container size={'lg'} className={'flex items-center justify-between gap-3'}>
                 <Link className={'text-xl font-normal text-foreground'} href={'/'}>Wise Mart</Link>
-                <div className={'lg:flex hidden items-center gap-3 justify-start'}>
-                    <Search />
-                    <ThemeToggle  />
-                    <Auth  />
-                </div>
-                <div className={'lg:hidden block'}>
-                    <Popover>
-                        <PopoverTrigger asChild>
-                            <Button
-                                variant={'outline'}
-                                size={'icon'}
-                            >
-                                <AlignJustify className={'w-4 h-4 text-foreground'} />
-                            </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className={'lg:hidden flex flex-col gap-3 mt-3'}>
-                            <Search />
-                            <ThemeToggle hasText />
-                            <Auth hasText />
-                        </PopoverContent>
-                    </Popover>
+                <div className={'flex items-center gap-3 justify-start'}>
+                    <div className={'lg:flex hidden items-center gap-3 justify-start'}>
+                        <Search />
+                        <ThemeToggle  />
+                        <Auth  />
+                    </div>
+                    <div className={'lg:hidden block'}>
+                        <Popover>
+                            <PopoverTrigger asChild>
+                                <Button
+                                    variant={'outline'}
+                                    size={'icon'}
+                                >
+                                    <AlignJustify className={'w-4 h-4 text-foreground'} />
+                                </Button>
+                            </PopoverTrigger>
+                            <PopoverContent className={'lg:hidden flex flex-col gap-3 mt-3'}>
+                                <Search />
+                                <ThemeToggle hasText />
+                                <Auth hasText />
+                            </PopoverContent>
+                        </Popover>
+                    </div>
+                    <Cart />
                 </div>
             </Container>
         </header>

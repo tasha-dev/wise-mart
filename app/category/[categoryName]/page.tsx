@@ -20,7 +20,7 @@ export default function CategoryPage({params: {categoryName}}):ReactNode {
     // Returning JSX
     return (
         <Page>
-            <h1 className="mb-10 scroll-m-20 border-b border-b-foreground pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">{categoryName.replace('%20', " ")}</h1>
+            <h1 className="mb-10 scroll-m-20 border-b border-b-foreground pb-2 text-3xl capitalize font-semibold tracking-tight transition-colors first:mt-0">{categoryName.replace('%20', " ")}</h1>
             {
                 (products.loading)
                     ? (
