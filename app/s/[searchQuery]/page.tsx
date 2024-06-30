@@ -23,7 +23,7 @@ export default function SearchPage({params: {searchQuery}}:searchPageType):React
     // Using useEffect hook to filter products base on search query
     useEffect(() => {
         if (!products.loading && products.error === undefined && products.data) {
-            const filtredItems = products.data.filter((product) => product.title.toLowerCase().includes(searchQuery.toLowerCase()));
+            const filtredItems = products.data.filter((product) => product.title?.toLowerCase().includes(searchQuery.toLowerCase()));
             setFilterdProducts(filtredItems);
         }
     }, [products.loading]);
