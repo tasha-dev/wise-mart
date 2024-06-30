@@ -7,7 +7,7 @@ export interface rootLayoutType {children: ReactNode;}
 export interface hasTextType {hasText?: boolean;}
 export interface categoryType {category: string;}
 export interface categoryPageType {params: { categoryName: string; }}
-export interface productPageType {params: { categoryName: string; }}
+export interface productPageType {params: { productID: string; }}
 export interface pageType {children: ReactNode}
 export interface containerType {
     size?: 'sm' | 'lg';
