@@ -58,10 +58,12 @@ export default function Cart():ReactNode {
                             ) : cart.cart.map((item, index) => (
                                 <CartItem
                                     key={index}
-                                    id={item.item.id}
-                                    title={item.item.title}
-                                    image={item.item.image}
-                                    price={item.item.price}
+                                    item={{
+                                        id : item.item.id,
+                                        title : item.item.title,
+                                        image : item.item.image,
+                                        price : item.item.price
+                                    }}
                                     count={item.count}
                                 />
                             ))

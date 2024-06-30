@@ -4,14 +4,14 @@
 
 // Importing part
 import {ReactNode} from "react";
-import {productType} from "@/types";
+import {cartItemType, productType} from "@/types";
 import Link from "next/link";
 import {CopyX} from "lucide-react";
 import {Button} from "@/components/ui/button";
 import {useCart} from "@/app/store";
 
 // Creating and exporting cart item component as default
-export default function CartItem({title, id, price, image, count}:productType):ReactNode {
+export default function CartItem({item: {title, id, price, image}, count}:cartItemType):ReactNode {
     // Defining states of component
     const cart = useCart();
 
