@@ -8,6 +8,7 @@ export interface hasTextType {hasText?: boolean;}
 export interface categoryType {category: string;}
 export interface categoryPageType {params: { categoryName: string; }}
 export interface productPageType {params: { productID: string; }}
+export interface searchPageType {params: { searchQuery: string; }}
 export interface pageType {children: ReactNode}
 export interface containerType {
     size?: 'sm' | 'lg';

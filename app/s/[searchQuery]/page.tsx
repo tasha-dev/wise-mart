@@ -5,7 +5,7 @@
 // Importing part
 import {ReactNode, useEffect, useState} from "react";
 import useFetch from "@/hooks/useFetch";
-import {productType} from "@/types";
+import {productType, searchPageType} from "@/types";
 import Product from "@/components/product";
 import {AlertTriangle} from "lucide-react"
 import {Alert, AlertDescription, AlertTitle,} from "@/components/ui/alert"
@@ -13,7 +13,7 @@ import ProductLoading from "@/components/loading/productLoading";
 import Page from "@/components/page";
 
 // Creating and exporting search page as default
-export default function SearchPage({params: {searchQuery}}):ReactNode {
+export default function SearchPage({params: {searchQuery}}:searchPageType):ReactNode {
     // Defining states of component
     const [filterdProducts, setFilterdProducts] = useState<productType[]>([]);
 
