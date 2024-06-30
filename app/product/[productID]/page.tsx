@@ -3,9 +3,9 @@
 'use client';
 
 // Importing part
-import {ReactNode, useState} from "react";
+import {ReactNode} from "react";
 import Page from "@/components/page";
-import {cartItemType, productType} from "@/types";
+import {productPageType, productType} from "@/types";
 import useFetch from "@/hooks/useFetch";
 import {AlertTriangle} from "lucide-react";
 import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert";
@@ -15,7 +15,7 @@ import {Button} from "@/components/ui/button";
 import {useCart} from "@/app/store";
 
 // Creating and exporting product page as default
-export default function ProductPage({params: {productID}}):ReactNode {
+export default function ProductPage({params: {productID}}:productPageType):ReactNode {
     // Defining states of component
     const cart = useCart();
 

@@ -6,14 +6,14 @@
 import {ReactNode} from "react";
 import Page from "@/components/page";
 import useFetch from "@/hooks/useFetch";
-import {productType} from "@/types";
+import {categoryPageType, productType} from "@/types";
 import ProductLoading from "@/components/loading/productLoading";
 import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert";
 import {AlertTriangle} from "lucide-react";
 import Product from "@/components/product";
 
 // Creating and exporting category page as default
-export default function CategoryPage({params: {categoryName}}):ReactNode {
+export default function CategoryPage({params: {categoryName}}:categoryPageType):ReactNode {
     // Fetching data
     const products = useFetch<productType[]>({url: `https://fakestoreapi.com/products/category/${categoryName.replace('%20', " ")}`});
 
