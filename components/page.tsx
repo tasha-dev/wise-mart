@@ -6,9 +6,10 @@
 import {ReactNode, useEffect} from "react";
 import Container from "@/components/ui/container";
 import {useUser} from "@/app/store";
+import {pageType} from "@/types";
 
 // Creating and exporting page component as default
-export default function Page({children}:{children: ReactNode}):ReactNode {
+export default function Page({children}:pageType):ReactNode {
     // Defining stores
     const user = useUser();
 
