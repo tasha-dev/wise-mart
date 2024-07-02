@@ -6,7 +6,7 @@
 import {ReactNode} from "react";
 import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger} from "@/components/ui/dialog";
 import {Button} from "@/components/ui/button";
-import {editDialogType} from "@/types";
+import {addDialogType} from "@/types";
 import {z} from 'zod';
 import {SubmitHandler, useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
@@ -27,18 +27,15 @@ const formSchema = z.object({
 // Defining form type
 type formType = z.infer<typeof formSchema>
 
-// Creating and exporting edit Dialog for dashboard as default
-export default function EditDialog({id, category, price, image, description, title, refresh}: editDialogType): ReactNode {
+// Creating and exporting add Dialog for dashboard as default
+export default function AddDialog({refresh}: addDialogType): ReactNode {
     // Defining form
-    const form = useForm<formType>({
-        resolver: zodResolver(formSchema),
-        values: {category, price, image, description, title}
-    })
+    const form = useForm<formType>({resolver: zodResolver(formSchema)})
 
     // Defining a function to handle submit event of form
     const onSubmitEventHandler:SubmitHandler<formType> = async (data) => {
-        await fetch(`https://fakestoreapi.com/products/${id}`,{
-            method:"PUT",
+        await fetch('https://fakestoreapi.com/products/',{
+            method:"POST",
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(
                 {
@@ -51,7 +48,7 @@ export default function EditDialog({id, category, price, image, description, tit
             )
         })
             .then(() => {
-                toast('The item is updated now.');
+                toast('The item is added now.');
                 refresh();
             })
             .catch(() => toast('There was an error while fetching the data'))
@@ -60,13 +57,13 @@ export default function EditDialog({id, category, price, image, description, tit
     // Returning JSX
     return (
         <Dialog>
-            <DialogTrigger asChild>
-                <Button className={'w-full mb-3'}>Edit</Button>
+            <DialogTrigger asChild className={'mt-3'}>
+                <Button className={'w-full'}>Add</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
-                    <DialogTitle>Edit Product</DialogTitle>
-                    <DialogDescription>Make changes to Product here. Click submit when you're done.</DialogDescription>
+                    <DialogTitle>Add Product</DialogTitle>
+                    <DialogDescription>Create new Product here. Click Submit when you're done.</DialogDescription>
                 </DialogHeader>
                 <Form {...form}>
                     <form

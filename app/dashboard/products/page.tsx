@@ -13,6 +13,7 @@ import {productType} from "@/types";
 import {Button} from "@/components/ui/button";
 import {toast} from "sonner";
 import EditDialog from "@/components/dashboard/editDialog";
+import AddDialog from "@/components/dashboard/addDialog";
 
 // Creating and exporting dashboard products page as default
 export default function DashboardProductPage():ReactNode {
@@ -100,7 +101,7 @@ export default function DashboardProductPage():ReactNode {
                             </Table>
                         )
             }
-            <Button onClick={handleAdd} className={'w-full mt-5'}>Add</Button>
+            <AddDialog />
         </Page>
     );
 }

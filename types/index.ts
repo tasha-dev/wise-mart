@@ -10,6 +10,7 @@ export interface categoryPageType {params: { categoryName: string; }}
 export interface productPageType {params: { productID: string; }}
 export interface searchPageType {params: { searchQuery: string; }}
 export interface pageType {children: ReactNode}
+export interface addDialogType {refresh: () => void;}
 export interface containerType {
     size?: 'sm' | 'lg';
     children: ReactNode;
