@@ -7,8 +7,6 @@ import {rootLayoutType} from "@/types";
 import {ReactNode} from "react";
 import {siteConfig} from "@/configs";
 import {Metadata} from "next";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
 import {Toaster} from "@/components/ui/sonner"
 
 // Defining fonts
@@ -45,9 +43,7 @@ export default function RootLayout({children}: rootLayoutType):ReactNode {
                 fontSans.className
             )}>
                 <Toaster />
-                <Header />
                 {children}
-                <Footer />
             </body>
         </html>
     )

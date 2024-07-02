@@ -9,7 +9,7 @@ import Auth from "@/components/ui/auth";
 import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover"
 import {Button} from "@/components/ui/button";
 import {AlignJustify} from "lucide-react";
-import Cart from "@/components/ui/cart";
+import Cart from "@/components/cart";
 
 // Creating and exporting header component as default
 export default function Header():ReactNode {

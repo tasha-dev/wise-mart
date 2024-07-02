@@ -33,3 +33,13 @@ export interface cartItemType {
     item: productType;
     count: number;
 }
+
+export interface editDialogType {
+    id: number;
+    title: string;
+    price: number;
+    description: string;
+    image: string;
+    category: string;
+    refresh: () => void;
+}

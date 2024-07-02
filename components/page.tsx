@@ -7,6 +7,8 @@ import {ReactNode, useEffect} from "react";
 import Container from "@/components/ui/container";
 import {useUser} from "@/app/store";
 import {pageType} from "@/types";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 // Creating and exporting page component as default
 export default function Page({children}:pageType):ReactNode {
@@ -22,7 +24,9 @@ export default function Page({children}:pageType):ReactNode {
     // Returning JSX
     return (
         <Container className={'mt-20 mb-5'}>
+            <Header />
             {children}
+            <Footer />
         </Container>
     );
 }
