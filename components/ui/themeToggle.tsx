@@ -12,7 +12,7 @@ import {hasTextType} from "@/types";
 import {cn} from "@/lib/utils";
 
 // Creating and exporting theme toggle component as default
-export default function ThemeToggle({hasText = false}:hasTextType):ReactNode {
+export default function ThemeToggle({hasText = false, variant = 'outline'}:hasTextType):ReactNode {
     // Defining states of component
     const {theme, toggleTheme} = useTheme();
 
@@ -23,8 +23,8 @@ export default function ThemeToggle({hasText = false}:hasTextType):ReactNode {
                 <TooltipTrigger asChild>
                     <Button
                         size={(hasText) ? "default" : "icon"}
-                        variant="outline"
-                        className={cn((hasText) ? 'flex items-center justify-start gap-2 lg:w-auto w-full' : '')}
+                        variant={variant}
+                        className={cn((hasText) ? 'flex items-center justify-start gap-2 lg:w-full w-full' : '')}
                         onClick={() => {
                             const htmlElement = document.documentElement;
 

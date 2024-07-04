@@ -7,14 +7,19 @@ import {ReactNode, useEffect} from "react";
 import {pageType} from "@/types";
 import Link from "next/link";
 import {Button} from "@/components/ui/button";
-import {Barcode, LogOut, ShoppingBasket, Users} from "lucide-react";
+import {Barcode, House, LogOut, ShoppingBasket, Users} from "lucide-react";
 import Container from "@/components/ui/container";
 import {useUser} from "@/app/store";
+import ThemeToggle from "@/components/ui/themeToggle";
+import {useRouter} from "next/navigation";
 
 // Creating and exporting page layout of dashboard pages as default
 export default function Page({children}: pageType): ReactNode {
     // Defining states of component
     const user = useUser();
+
+    // Defining router
+    const router = useRouter();
 
     // Defining content of menu
     const menuContent: {
@@ -22,6 +27,11 @@ export default function Page({children}: pageType): ReactNode {
         link: string,
         icon: JSX.Element
     }[] = [
+        {
+            title: 'Home',
+            link: '/',
+            icon: <House className={'w-4 h-4 shrink-0'}/>
+        },
         {
             title: 'Products',
             link: '/dashboard/products',
@@ -61,9 +71,13 @@ export default function Page({children}: pageType): ReactNode {
                             </Link>
                         ))
                     }
+                    <ThemeToggle variant={'ghost'} />
                     <Button
                         size={'icon'}
-                        onClick={() => user.logOut()}
+                        onClick={() => {
+                            user.logOut();
+                            router.push('/')
+                        }}
                         variant={'destructive'}
                         className={'shrink-0'}
                     >
@@ -83,9 +97,13 @@ export default function Page({children}: pageType): ReactNode {
                             </Link>
                         ))
                     }
+                    <ThemeToggle variant={'ghost'} hasText />
                 </div>
                 <Button
-                    onClick={() => user.logOut()}
+                    onClick={() => {
+                        user.logOut();
+                        router.push('/')
+                    }}
                     variant={'destructive'}
                     className={'lg:flex hidden items-center justify-start gap-2 w-full'}
                 >
