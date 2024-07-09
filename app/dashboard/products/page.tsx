@@ -101,7 +101,7 @@ export default function DashboardProductPage():ReactNode {
                             </Table>
                         )
             }
-            <AddDialog />
+            <AddDialog refresh={products.refresh}  />
         </Page>
     );
 }

@@ -7,7 +7,7 @@ import Container from "@/components/ui/container";
 export default function Footer():ReactNode {
     // Returning JSX
     return (
-        <footer className={'bg-background/20 backdrop-blur-2xl border-t border-t-foreground/20'}>
+        <footer className={'bg-background/20 backdrop-blur-2xl border-t border-t-foreground/20 mt-10'}>
             <Container size={'lg'}>
                 <div className={'flex gap-3 items-center justify-between flex-wrap'}>
                     <p>
