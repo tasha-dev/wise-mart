@@ -32,7 +32,7 @@ export default function EditDialog({id, category, price, image, description, tit
     // Defining form
     const form = useForm<formType>({
         resolver: zodResolver(formSchema),
-        values: {category, price, image, description, title}
+        values: {category, price: `${price}`, image, description, title}
     })
 
     // Defining a function to handle submit event of form
