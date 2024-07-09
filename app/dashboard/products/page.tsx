@@ -27,16 +27,11 @@ export default function DashboardProductPage():ReactNode {
             headers: {'Content-Type': 'application/json'},
         })
             .then((data) => data.json())
-            .then((data) => {
+            .then(() => {
                 toast('The Product is deleted now');
-                console.log(data);
                 products.refresh();
             })
             .catch(() => toast('There was an error while fetching the data'))
-    }
-
-    function handleAdd() {
-
     }
 
     // Returning JSX

@@ -48,3 +48,10 @@ export interface hasTextType {
     hasText?: boolean;
     variant?: 'outline' | 'ghost';
 }
+
+export interface dashboardCartType {
+    id: number;
+    userId: number;
+    date: string;
+    products: {productId: number, quantity: number}[];
+}
