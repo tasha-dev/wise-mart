@@ -12,8 +12,8 @@ import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/c
 import {productType} from "@/types";
 import {Button} from "@/components/ui/button";
 import {toast} from "sonner";
-import EditDialog from "@/components/dashboard/editDialog";
-import AddDialog from "@/components/dashboard/addDialog";
+import EditDialog from "@/components/dashboard/product/editDialog";
+import AddDialog from "@/components/dashboard/product/addDialog";
 
 // Creating and exporting dashboard products page as default
 export default function DashboardProductPage():ReactNode {

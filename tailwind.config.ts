@@ -7,6 +7,7 @@ const config = {
     darkMode: ["class"],
     content: [
         './components/**/*.{ts,tsx}',
+        './components/**/**/*.{ts,tsx}',
         './components/*.{ts,tsx}',
         './app/**/*.{ts,tsx}',
         './app/*.{ts,tsx}',

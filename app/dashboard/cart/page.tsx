@@ -10,7 +10,7 @@ import {dashboardCartType, productType} from "@/types";
 import {AlertTriangle, LoaderCircle} from "lucide-react";
 import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
-import EditDialog from "@/components/dashboard/editDialog";
+import EditDialog from "@/components/dashboard/product/editDialog";
 import {Button} from "@/components/ui/button";
 import {toast} from "sonner";
 
