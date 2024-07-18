@@ -12,11 +12,25 @@ import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import {Button} from "@/components/ui/button";
 import AddDialog from "@/components/dashboard/user/addDialog";
+import {toast} from "sonner";
 
-// Creating and exporting cart page of dashboard as default
-export default function CartPage():ReactNode {
+// Creating and exporting users page of dashboard as default
+export default function UsersPage():ReactNode {
     // Fetching api
     const users = useFetch<userType[]>({url: 'https://fakestoreapi.com/users'});
+
+    // Defining functions to handle some actions
+    function handleDelete(id:number) {
+        fetch(`https://fakestoreapi.com/users/${id}`,{
+            method:"DELETE",
+            headers: {'Content-Type': 'application/json'},
+        })
+            .then(() => {
+                toast('The user has been deleted!')
+                users.refresh();
+            })
+            .catch(() => toast('There was an error while fetching the data'))
+    }
 
     // Returning JSX
     return (
@@ -62,7 +76,7 @@ export default function CartPage():ReactNode {
                                                 <TableCell>{item.phone}</TableCell>
                                                 <TableCell>
                                                     <Button className={'w-full mb-3'}>Edit</Button>
-                                                    <Button className={'w-full'} variant={'destructive'}>Delete</Button>
+                                                    <Button onClick={() => handleDelete(item.id)} className={'w-full'} variant={'destructive'}>Delete</Button>
                                                 </TableCell>
                                             </TableRow>
                                         ))
