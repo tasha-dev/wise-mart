@@ -13,6 +13,7 @@ import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/c
 import {Button} from "@/components/ui/button";
 import AddDialog from "@/components/dashboard/user/addDialog";
 import {toast} from "sonner";
+import EditDialog from "@/components/dashboard/user/editDialog";
 
 // Creating and exporting users page of dashboard as default
 export default function UsersPage():ReactNode {
@@ -75,8 +76,22 @@ export default function UsersPage():ReactNode {
                                                 <TableCell>{item.address.city}</TableCell>
                                                 <TableCell>{item.phone}</TableCell>
                                                 <TableCell>
-                                                    <Button className={'w-full mb-3'}>Edit</Button>
-                                                    <Button onClick={() => handleDelete(item.id)} className={'w-full'} variant={'destructive'}>Delete</Button>
+                                                    <EditDialog 
+                                                        refresh={users.refresh} 
+                                                        email={item.email} 
+                                                        username={item.username}
+                                                        password={item.password}
+                                                        firstname={item.name.firstname}
+                                                        lastname={item.name.lastname}
+                                                        city={item.address.city}
+                                                        street={item.address.street}
+                                                        number={item.address.number}
+                                                        zipcode={item.address.zipcode}
+                                                        lat={item.address.geolocation.lat}
+                                                        long={item.address.geolocation.long}
+                                                        phone={item.phone}
+                                                    />
+                                                    <Button onClick={() => handleDelete(item.id)} className={'w-full mt-3'} variant={'destructive'}>Delete</Button>
                                                 </TableCell>
                                             </TableRow>
                                         ))

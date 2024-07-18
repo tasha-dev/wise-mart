@@ -74,3 +74,19 @@ export interface userType {
     },
     phone:string
 }
+
+export interface editDialogUserType {
+  email: string;
+  username: string;
+  password: string;
+  firstname: string;
+  lastname: string;
+  city: string;
+  street: string;
+  number: number;
+  zipcode: string;
+  lat: string;
+  long: string; 
+  phone: string; 
+  refresh: () => void;
+}

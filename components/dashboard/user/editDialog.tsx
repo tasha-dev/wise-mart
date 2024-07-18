@@ -6,7 +6,6 @@
 import {ReactNode} from "react";
 import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger} from "@/components/ui/dialog";
 import {Button} from "@/components/ui/button";
-import {addDialogType} from "@/types";
 import {z} from 'zod';
 import {SubmitHandler, useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
@@ -14,6 +13,7 @@ import {Form, FormControl, FormLabel, FormMessage} from "@/components/ui/form"
 import {Input} from "@/components/ui/input";
 import {LoaderCircle} from "lucide-react";
 import {toast} from "sonner";
+import {editDialogUserType} from "@/types";
 
 // Defining form schema
 const formSchema = z.object({
@@ -34,12 +34,28 @@ const formSchema = z.object({
 // Defining form type
 type formType = z.infer<typeof formSchema>
 
-// Creating and exporting add Dialog for dashboard as default
-export default function AddDialog({refresh}: addDialogType): ReactNode {
-    // Defining form
-    const form = useForm<formType>({resolver: zodResolver(formSchema)})
+// Creating and exporting edit dialog of user dashboard as default
+export default function EditDialog({email, username, password, firstname, lastname, city, street, number, zipcode, lat, long, phone, refresh}:editDialogUserType):ReactNode {
+  // Defining form
+  const form = useForm<formType>({
+    resolver: zodResolver(formSchema),
+    values: {
+        email,
+        username,
+        password,
+        firstname,
+        lastname,
+        city,
+        street,
+        number: `${number}`,
+        zipcode, 
+        lat,
+        long,
+        phone
+    }
+  })
 
-    // Defining a function to handle submit event of form
+  // Defining a function to handle submit event of form
     const onSubmitEventHandler:SubmitHandler<formType> = async (data) => {
         await fetch('https://fakestoreapi.com/users/',{
             method:"POST",
@@ -74,11 +90,11 @@ export default function AddDialog({refresh}: addDialogType): ReactNode {
             .catch(() => toast('There was an error while fetching the data'))
     }
 
-    // Returning JSX
-    return (
+  // Returning JSX
+  return (
         <Dialog>
-            <DialogTrigger asChild className={'mt-3'}>
-                <Button className={'w-full'}>Add</Button>
+            <DialogTrigger asChild>
+                <Button className={'w-full'}>Edit</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
