@@ -22,13 +22,13 @@ const formSchema = z.object({
     password: z.string().min(8).max(12),
     firstname: z.string().min(3).max(50),
     lastname: z.string().min(3).max(50),
-    zipcode: z.string(),
+    zipcode: z.string().min(1).refine((val) => !Number.isNaN(parseInt(val, 10)), {message: "Expected number, received a string"}),
     lat: z.string().min(3).max(50),
     long: z.string().min(3).max(50),
     city: z.string().min(3).max(50),
     street: z.string().min(3).max(50),
-    number: z.number().min(0),
-    phone: z.string()
+    number: z.string().min(1).refine((val) => !Number.isNaN(parseInt(val, 10)), {message: "Expected number, received a string"}),
+    phone: z.string().min(11).max(12)
 })
 
 // Defining form type
@@ -36,23 +36,8 @@ type formType = z.infer<typeof formSchema>
 
 // Creating and exporting add Dialog for dashboard as default
 export default function AddDialog({refresh}: addDialogType): ReactNode {
-    // Defining states of component
-    const [mapURL, setMapURL] = useState<string>();
-
     // Defining form
     const form = useForm<formType>({resolver: zodResolver(formSchema)})
-
-    // Using useEffect hook to get user map
-    useEffect(() => {
-        (navigator.geolocation)
-            ? (
-                navigator.geolocation.getCurrentPosition( (position:any) => {
-                    const lat = position.coords.latitude;
-                    const lon = position.coords.longitude;
-                    setMapURL(`https://www.google.com/maps/@${lat},${lon},15z`)
-                })
-            ) : alert("Geolocation is not supported by this browser.");
-    }, []);
 
     // Defining a function to handle submit event of form
     const onSubmitEventHandler:SubmitHandler<formType> = async (data) => {
@@ -82,7 +67,11 @@ export default function AddDialog({refresh}: addDialogType): ReactNode {
                 }
             )
         })
-            .then(() => {toast('The User is added now.');refresh();})
+            .then(res => res.json())
+            .then((data) => {
+              toast('The User is added now.');
+              refresh();
+            })
             .catch(() => toast('There was an error while fetching the data'))
     }
 
@@ -109,79 +98,86 @@ export default function AddDialog({refresh}: addDialogType): ReactNode {
                                 <FormControl className={'w-full col-span-3'}>
                                     <Input {...form.register('email')} type={'text'}/>
                                 </FormControl>
+                                <FormMessage>{form.formState.errors?.email?.message}</FormMessage>
                             </div>
                             <div className={'grid lg:grid-cols-4 grid-cols-1 gap-3 mb-3 items-center'}>
                                 <FormLabel className="text-base">Username</FormLabel>
                                 <FormControl className={'w-full col-span-3'}>
                                     <Input {...form.register('username')} type={'text'}/>
                                 </FormControl>
+                                <FormMessage>{form.formState.errors?.username?.message}</FormMessage>
                             </div>
                             <div className={'grid lg:grid-cols-4 grid-cols-1 gap-3 mb-3 items-center'}>
                                 <FormLabel className="text-base">Password</FormLabel>
                                 <FormControl className={'w-full col-span-3'}>
                                     <Input {...form.register('password')} type={'text'}/>
                                 </FormControl>
+                                <FormMessage>{form.formState.errors?.password?.message}</FormMessage>
                             </div>
                             <div className={'grid lg:grid-cols-4 grid-cols-1 gap-3 mb-3 items-center'}>
                                 <FormLabel className="text-base">Firstname</FormLabel>
                                 <FormControl className={'w-full col-span-3'}>
                                     <Input {...form.register('firstname')} type={'text'}/>
                                 </FormControl>
+                                <FormMessage>{form.formState.errors?.firstname?.message}</FormMessage>
                             </div>
                             <div className={'grid lg:grid-cols-4 grid-cols-1 gap-3 mb-3 items-center'}>
                                 <FormLabel className="text-base">Lastname</FormLabel>
                                 <FormControl className={'w-full col-span-3'}>
                                     <Input {...form.register('lastname')} type={'text'}/>
                                 </FormControl>
+                                <FormMessage>{form.formState.errors?.lastname?.message}</FormMessage>
                             </div>
                             <div className={'grid lg:grid-cols-4 grid-cols-1 gap-3 mb-3 items-center'}>
                                 <FormLabel className="text-base">Zipcode</FormLabel>
                                 <FormControl className={'w-full col-span-3'}>
                                     <Input {...form.register('zipcode')} type={'text'}/>
                                 </FormControl>
+                                <FormMessage>{form.formState.errors?.zipcode?.message}</FormMessage>
                             </div>
                             <div className={'grid lg:grid-cols-4 grid-cols-1 gap-3 mb-3 items-center'}>
                                 <FormLabel className="text-base">Lat</FormLabel>
                                 <FormControl className={'w-full col-span-3'}>
-                                    <Input disabled {...form.register('lat')} type={'text'}/>
+                                    <Input {...form.register('lat')} type={'text'}/>
                                 </FormControl>
+                                <FormMessage>{form.formState.errors?.lat?.message}</FormMessage>
                             </div>
                             <div className={'grid lg:grid-cols-4 grid-cols-1 gap-3 mb-3 items-center'}>
                                 <FormLabel className="text-base">Long</FormLabel>
                                 <FormControl className={'w-full col-span-3'}>
-                                    <Input disabled {...form.register('long')} type={'text'}/>
+                                    <Input {...form.register('long')} type={'text'}/>
                                 </FormControl>
+                                <FormMessage>{form.formState.errors?.long?.message}</FormMessage>
                             </div>
-                            {
-                                (mapURL !== undefined)
-                                    ? <iframe className={'w-full h-[450px] mb-3'} height="450" loading="lazy" src={mapURL} />
-                                    : <div className={'w-full h-[450px] bg-gray-400 animate-pulse'} />
-                            }
                             <div className={'grid lg:grid-cols-4 grid-cols-1 gap-3 mb-3 items-center'}>
                             <FormLabel className="text-base">City</FormLabel>
                                 <FormControl className={'w-full col-span-3'}>
                                     <Input {...form.register('city')} type={'text'}/>
                                 </FormControl>
+                                <FormMessage>{form.formState.errors?.city?.message}</FormMessage>
                             </div>
                             <div className={'grid lg:grid-cols-4 grid-cols-1 gap-3 mb-3 items-center'}>
                                 <FormLabel className="text-base">Street</FormLabel>
                                 <FormControl className={'w-full col-span-3'}>
                                     <Input {...form.register('street')} type={'text'}/>
                                 </FormControl>
+                                <FormMessage>{form.formState.errors?.street?.message}</FormMessage>
                             </div>
                             <div className={'grid lg:grid-cols-4 grid-cols-1 gap-3 mb-3 items-center'}>
                                 <FormLabel className="text-base">Number</FormLabel>
                                 <FormControl className={'w-full col-span-3'}>
                                     <Input {...form.register('number')} type={'text'}/>
                                 </FormControl>
+                                <FormMessage>{form.formState.errors?.number?.message}</FormMessage>
                             </div>
                             <div className={'grid lg:grid-cols-4 grid-cols-1 gap-3 mb-3 items-center'}>
                                 <FormLabel className="text-base">Phone</FormLabel>
                                 <FormControl className={'w-full col-span-3'}>
                                     <Input {...form.register('phone')} type={'text'}/>
                                 </FormControl>
-                            </div>
-                            <FormMessage>{form.formState.errors.email?.message}</FormMessage>
+                                <FormMessage>{form.formState.errors?.phone?.message}</FormMessage>
+                            </div> 
+                            <FormMessage>{form.formState.errors.root?.message}</FormMessage>
                         </div>
                         <Button disabled={form.formState.isSubmitting} className={'w-full'}>
                             {

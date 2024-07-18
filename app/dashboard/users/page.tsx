@@ -54,7 +54,7 @@ export default function CartPage():ReactNode {
                                         users.data?.map((item, index) => (
                                             <TableRow key={index}>
                                                 <TableCell className="w-[100px]">{item.id}</TableCell>
-                                                <TableCell>{JSON.stringify(item.username)}</TableCell>
+                                                <TableCell>{item.email}</TableCell>
                                                 <TableCell>{item.username}</TableCell>
                                                 <TableCell>{item.password}</TableCell>
                                                 <TableCell>{`${item.name.firstname} , ${item.name.lastname}`}</TableCell>
